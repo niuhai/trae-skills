@@ -3,21 +3,21 @@ name: "cn-punctuation-checker"
 description: "Checks Chinese text for incorrect English punctuation marks. Invoke when user wants to find and fix wrong punctuation in Chinese copy."
 ---
 
-# 中文文案标点检查工具
+# Chinese Punctuation Checker
 
-这是一个专门用于检查中文文案中错误使用英文标点符号的skill。
+A skill for detecting incorrect English punctuation marks in Chinese text.
 
-## 功能概述
+## Features
 
-1. **自动识别**: 检测中文文案中错误使用的英文标点符号
-2. **精确定位**: 报告错误标点的行号、列号及上下文片段
-3. **生成报告**: 输出Markdown格式的检查报告
-4. **批量修复**: 一键替换所有错误标点为正确的中文标点
-5. **全项目扫描**: 支持检查整个项目，自动规避代码文件
+1. **Auto Detection**: Detect English punctuation marks incorrectly used in Chinese text
+2. **Precise Location**: Report line number, column number, and context snippet for each error
+3. **Report Generation**: Output Markdown format inspection report
+4. **Batch Fix**: One-click replacement of all incorrect punctuation with correct Chinese punctuation
+5. **Project-wide Scan**: Support scanning entire project with automatic exclusion of code files
 
-## 支持检查的标点符号
+## Supported Punctuation Marks
 
-| 英文标点 | 中文标点 |
+| English | Chinese |
 |---------|---------|
 | , | ， |
 | . | 。 |
@@ -25,44 +25,44 @@ description: "Checks Chinese text for incorrect English punctuation marks. Invok
 | ! | ！ |
 | : | ： |
 | ; | ； |
-| " | " 或 " |
-| ' | ' 或 ' |
+| " | " or " |
+| ' | ' or ' |
 | ( ) | （ ） |
 | [ ] | 【 】 |
-| - | —（破折号） |
-| ... | ……（省略号） |
+| - | — |
+| ... | …… |
 
-## 使用方法
+## Usage
 
-### 1. 检查单个文件
+### 1. Check a Single File
 
-用户可以提供要检查的文件路径或文件内容，skill将自动分析并生成报告。
+Users can provide a file path or file content, and the skill will automatically analyze and generate a report.
 
-### 2. 检查整个项目
+### 2. Check Entire Project
 
-使用以下命令检查整个项目：
+Use the following command to check the entire project:
 ```
-检查整个项目的英文标点
+Check English punctuation in the entire project
 ```
 
-skill将自动：
-- 扫描项目中的文案类文件（包括 .js, .ts 等脚本文件）
-- 规避代码文件（.py, .java, .go, .cpp, .c, .cs, .php, .rb, .swift, .kt, .css 等）
-- 排除构建产物目录（node_modules, .git, dist, target, build, out 等）
+The skill will automatically:
+- Scan text files in the project (including .js, .ts script files)
+- Exclude code files (.py, .java, .go, .cpp, .c, .cs, .php, .rb, .swift, .kt, .css, etc.)
+- Exclude build directories (node_modules, .git, dist, target, build, out, etc.)
 
-### 3. 扫描范围
+### 3. Scan Scope
 
-**默认检查的文件类型（文案类文件）：**
-- `.md` - Markdown文档
-- `.txt` - 文本文件
-- `.html`, `.htm` - HTML文件
-- `.xml` - XML文件
-- `.json` - JSON文件（仅检查字符串值）
-- `.yml`, `.yaml` - YAML配置文件
-- `.properties` - Properties文件
-- `.vue`, `.jsx`, `.tsx`, `.js`, `.ts` - 框架模板文件和脚本文件
+**Default file types to check (text files):**
+- `.md` - Markdown documents
+- `.txt` - Text files
+- `.html`, `.htm` - HTML files
+- `.xml` - XML files
+- `.json` - JSON files (only check string values)
+- `.yml`, `.yaml` - YAML config files
+- `.properties` - Properties files
+- `.vue`, `.jsx`, `.tsx`, `.js`, `.ts` - Framework template files and script files
 
-**默认排除的目录：**
+**Default excluded directories:**
 - `node_modules`
 - `.git`
 - `dist`
@@ -75,7 +75,7 @@ skill将自动：
 - `.next`
 - `.nuxt`
 
-**默认排除的文件类型（代码文件）：**
+**Default excluded file types (code files):**
 - `.css`, `.scss`, `.less`, `.sass`
 - `.py`
 - `.java`
@@ -89,67 +89,67 @@ skill将自动：
 - `.rs`
 - `.sql`
 
-### 4. 生成报告
+### 4. Generate Report
 
-检查完成后，生成Markdown格式的报告，包含：
-- 错误标点的原始内容
-- 位置信息（文件路径、行号、列号）
-- 上下文片段
-- 建议的正确中文标点替换方案
+After checking, generate a Markdown format report including:
+- Original content of incorrect punctuation
+- Location info (file path, line number, column number)
+- Context snippet
+- Suggested correct Chinese punctuation replacement
 
-### 5. 批量修复
+### 5. Batch Fix
 
-提供一键修复功能，将所有识别到的错误标点自动替换为正确的中文标点。
+Provide one-click fix functionality to automatically replace all detected incorrect punctuation with correct Chinese punctuation.
 
-## 输出格式示例
+## Output Format Example
 
 ```markdown
-# 中文标点检查报告
+# Chinese Punctuation Check Report
 
-## 检查概要
-- 检查文件: 5个文件
-- 总发现错误: 15处
-- 检查时间: 2026-01-01 10:00:00
-
----
-
-## 错误详情
-
-### 文件: docs/README.md
-
-| 行号 | 列号 | 错误标点 | 正确标点 | 上下文 |
-|-----|-----|---------|---------|-------|
-| 5   | 12  | ,       | ，      | "你好，世界" |
-| 10  | 8   | .       | 。      | "这是句子" |
-
-### 文件: content/about.txt
-
-| 行号 | 列号 | 错误标点 | 正确标点 | 上下文 |
-|-----|-----|---------|---------|-------|
-| 3   | 15  | !       | ！      | "欢迎访问！" |
+## Summary
+- Files checked: 5 files
+- Total errors found: 15
+- Check time: 2026-01-01 10:00:00
 
 ---
 
-## 批量修复
+## Error Details
 
-已识别 15 处错误标点，是否需要一键修复？(是/否)
+### File: docs/README.md
+
+| Line | Column | Wrong | Correct | Context |
+|-----|-----|---------|---------|-------|
+| 5   | 12  | ,       | ，      | "Hello, world" |
+| 10  | 8   | .       | 。      | "This is a sentence" |
+
+### File: content/about.txt
+
+| Line | Column | Wrong | Correct | Context |
+|-----|-----|---------|---------|-------|
+| 3   | 15  | !       | ！      | "Welcome!" |
+
+---
+
+## Batch Fix
+
+15 incorrect punctuation marks detected. Do you want to fix all? (yes/no)
 ```
 
-## 执行流程
+## Execution Flow
 
-1. **扫描项目**: 遍历项目目录，筛选文案类文件
-2. **过滤排除**: 排除代码文件和指定目录
-3. **读取内容**: 逐个读取符合条件的文件
-4. **识别错误**: 使用正则表达式识别英文标点符号
-5. **记录位置**: 记录每个错误标点的文件路径、行号、列号
-6. **生成报告**: 输出Markdown格式的检查报告
-7. **提供修复**: 提供批量修复选项
+1. **Scan Project**: Traverse project directory, filter text files
+2. **Filter Exclusions**: Exclude code files and specified directories
+3. **Read Content**: Read each qualified file
+4. **Detect Errors**: Use regex to identify English punctuation marks
+5. **Record Location**: Record file path, line number, column number for each error
+6. **Generate Report**: Output Markdown format inspection report
+7. **Provide Fix**: Offer batch fix option
 
-## 智能识别规则
+## Smart Detection Rules
 
-为避免误报，skill采用以下智能识别规则：
+To avoid false positives, the skill uses the following smart detection rules:
 
-1. **仅检查包含中文的文本行**: 如果一行中没有中文字符，则跳过检查
-2. **排除URL和文件路径**: 不对URL或文件路径中的标点进行替换
-3. **排除代码中的字符串**: 在代码文件中，即使扩展名允许检查，也跳过代码字符串
-4. **排除注释**: 跳过Markdown代码块、HTML注释等内容
+1. **Only check lines containing Chinese characters**: Skip lines without Chinese characters
+2. **Exclude URLs and file paths**: Do not replace punctuation in URLs or file paths
+3. **Exclude strings in code**: Skip code strings even in allowed file extensions
+4. **Exclude comments**: Skip Markdown code blocks, HTML comments, etc.
